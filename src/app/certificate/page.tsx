@@ -45,11 +45,22 @@ type CertificatePageProps = {
 export default async function CertificatePage({ searchParams }: CertificatePageProps) {
   const params = (await searchParams) ?? {};
   const rawName = params.participantName;
+  const rawWaTo = params.waTo;
+  const rawPhone = params.phone;
+  const rawMsisdn = params.msisdn;
+  const rawWaSent = params.waSent;
   const participantName = typeof rawName === "string" && rawName.trim()
     ? rawName.trim()
     : "JOHN MWANGI";
+  const waTo = [rawWaTo, rawPhone, rawMsisdn].find(
+    (v): v is string => typeof v === "string" && v.trim().length > 0,
+  )?.trim() || "";
+  const hasWaRecipient = Boolean(waTo);
+  const waSent = rawWaSent === "1";
   const cert = await getCertPreview(participantName);
   const downloadHref = `/api/certificate/download?participantName=${encodeURIComponent(cert.learnerName)}`;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || "http://localhost:3000";
+  const certificateImageUrl = cert.cardImageUrl || `${appUrl}${downloadHref}`;
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-[390px] bg-[#f3f3f3] pb-24">
@@ -115,6 +126,28 @@ export default async function CertificatePage({ searchParams }: CertificatePageP
         </div>
 
         <div className="mt-3 space-y-2">
+          <form action="/api/certificate/send-whatsapp" method="post" className="space-y-2">
+            <input type="hidden" name="participantName" value={cert.learnerName} />
+            <input type="hidden" name="certificateImageUrl" value={certificateImageUrl} />
+            <input type="hidden" name="whatsappNumber" value={waTo} />
+            <button
+              type="submit"
+              disabled={!hasWaRecipient}
+              className="inline-flex w-full items-center justify-center bg-[#af101a] px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white"
+            >
+              ↗ Send to WhatsApp
+            </button>
+          </form>
+          {!hasWaRecipient ? (
+            <p className="text-[11px] text-[#8b1e24]">
+              Missing WhatsApp recipient in webview context (`waTo`/`phone`/`msisdn`).
+            </p>
+          ) : null}
+          {waSent ? (
+            <p className="text-[11px] font-medium text-[#006533]">
+              WhatsApp message sent to {waTo}.
+            </p>
+          ) : null}
           <a href={downloadHref} className="inline-flex w-full items-center justify-center border border-[#af101a] bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#af101a]">
             ⇩ Download Certificate
           </a>

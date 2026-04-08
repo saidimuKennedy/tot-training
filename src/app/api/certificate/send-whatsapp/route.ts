@@ -53,7 +53,7 @@ export async function POST(request: Request) {
   );
 
   const result = await response.json().catch(() => ({}));
-  if (!response.ok || !result.success) {
+  if (!response.ok) {
     return NextResponse.json(
       { success: false, error: result.error || "Failed to send WhatsApp message" },
       { status: 502 },

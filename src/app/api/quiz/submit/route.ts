@@ -15,6 +15,6 @@ export async function POST(request: Request) {
   return NextResponse.json({
     correct,
     explanation: correct ? content.quiz.explanation : "Almost. The correct answer is iTax.",
-    nextRoute: `/day/${dayId}/result?answer=${answer}`,
+    nextRoute: `/day/${dayId}/lesson?answer=${encodeURIComponent(answer)}&submitted=1`,
   });
 }

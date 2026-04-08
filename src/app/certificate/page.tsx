@@ -49,6 +49,7 @@ export default async function CertificatePage({ searchParams }: CertificatePageP
     ? rawName.trim()
     : "JOHN MWANGI";
   const cert = await getCertPreview(participantName);
+  const downloadHref = `/api/certificate/download?participantName=${encodeURIComponent(cert.learnerName)}`;
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-[390px] bg-[#f3f3f3] pb-24">
@@ -117,23 +118,15 @@ export default async function CertificatePage({ searchParams }: CertificatePageP
           <button className="inline-flex w-full items-center justify-center bg-[#af101a] px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white">
             ↗ Send to WhatsApp
           </button>
-          <button className="inline-flex w-full items-center justify-center border border-[#af101a] bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#af101a]">
+          <a href={downloadHref} className="inline-flex w-full items-center justify-center border border-[#af101a] bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#af101a]">
             ⇩ Download Certificate
-          </button>
+          </a>
         </div>
 
         <p className="mt-4 text-xs leading-relaxed text-[#646464]">
           This document is a verifiable digital certificate. Any person can verify the authenticity of this credential by scanning the QR code or using the unique ID above.
         </p>
 
-        <div className="mt-6">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#5e5e5e]">Related Milestones</p>
-          <div className="mt-2 space-y-2">
-            <div className="bg-white p-3 text-xs"><p className="font-bold">TOP 5% OF CLASS</p><p className="mt-1 text-[#646464]">Ranked within top percentile for practical lab assessments.</p></div>
-            <div className="bg-white p-3 text-xs"><p className="font-bold">LAB EXCELLENCE</p><p className="mt-1 text-[#646464]">Achieved 100% score in hardening module.</p></div>
-            <div className="bg-white p-3 text-xs"><p className="font-bold">SPEED RECORD</p><p className="mt-1 text-[#646464]">Completed all modules ahead of schedule.</p></div>
-          </div>
-        </div>
         <Link href="/course" className="mt-4 inline-flex text-xs font-medium text-[#5e5e5e]">← Back to course</Link>
       </div>
       <BottomNav active="awards" />

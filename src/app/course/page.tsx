@@ -43,10 +43,10 @@ export default function CourseHomePage() {
             Master the essentials of TOT compliance for small businesses through our structured three-day intensive program.
           </p>
           <Link
-            href="/commitment"
+            href="/day/1"
             className="mt-5 inline-flex rounded-sm bg-[#1b1b1b] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white"
           >
-            Resume Module
+            Start Learning
           </Link>
         </div>
       </section>
@@ -83,42 +83,6 @@ export default function CourseHomePage() {
             {day.id === 1 ? <div className="mt-3 h-[2px] w-full bg-[#006533]" /> : null}
           </Link>
         ))}
-      </section>
-
-      <section className="mt-8 grid gap-4">
-        <div className="bg-white p-5 shadow-[0_12px_28px_rgba(27,27,27,0.06)]">
-          <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#af101a]">Module Overview</p>
-          <h3 className="mt-1 text-2xl font-bold">Registration Essentials</h3>
-          <p className="mt-4 text-xs leading-relaxed text-[#5b403d]">
-            Turnover Tax (TOT) is a tax charged on the gross sales of a business. It is applicable to businesses whose annual turnover does not exceed KES 25 million. This module covers the foundational knowledge required to transition your business to the TOT regime.
-          </p>
-          <ul className="mt-4 space-y-2 text-xs text-[#5b403d]">
-            <li><span className="font-bold text-[#af101a]">01/</span> Who qualifies for Turnover Tax in Kenya?</li>
-            <li><span className="font-bold text-[#af101a]">02/</span> Step-by-step iTax PIN amendment.</li>
-            <li><span className="font-bold text-[#af101a]">03/</span> Benefits of TOT vs standard Corporate Tax.</li>
-          </ul>
-          <div className="mt-5 flex gap-2">
-            <button className="rounded-sm bg-[#e2e2e2] px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#474747]">Download Syllabus</button>
-            <Link href="/day/1/lesson" className="rounded-sm bg-[#af101a] px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white">Start Lesson</Link>
-          </div>
-        </div>
-
-        <div className="bg-[#1b1b1b] p-5 text-white">
-          <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">Technical Support</p>
-          <h4 className="mt-1 text-xl font-bold">Need Guidance?</h4>
-          <p className="mt-2 text-xs leading-relaxed text-white/80">Our tax experts are available for live consultation every Tuesday at 10:00 AM.</p>
-        </div>
-
-        <div className="bg-[#f3f3f3] p-4">
-          <div className="mb-2 flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.2em] text-[#5e5e5e]">
-            <span>Resources</span>
-            <span>Qty: 04</span>
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between bg-white px-3 py-2 text-xs"><span>TOT User Guide.pdf</span><span>⇩</span></div>
-            <div className="flex items-center justify-between bg-white px-3 py-2 text-xs"><span>Compliance Checklist</span><span>⇩</span></div>
-          </div>
-        </div>
       </section>
 
       <footer className="mt-6 rounded bg-white px-3 py-2 text-xs font-medium text-[#5e5e5e]">

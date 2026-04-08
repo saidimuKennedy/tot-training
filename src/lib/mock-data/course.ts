@@ -100,7 +100,7 @@ export const dayContent: Record<number, { overview: string[]; why: string; takea
       "Submit return and pay on or before the 20th of the following month.",
       "Generate PRN first, then complete payment and retain records.",
     ],
-    videoPublicId: "tot/day3_compliance_filing",
+    videoPublicId: "vid3",
     quiz: {
       id: "day3-q1",
       prompt: "When should ToT be filed and paid?",

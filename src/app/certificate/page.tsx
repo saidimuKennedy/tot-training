@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BottomNav } from "@/components/course/bottom-nav";
+import { renderHypecardUrl } from "@/lib/integrations/hypecards/client";
 
 type CertPreview = {
   learnerName: string;
@@ -11,12 +12,32 @@ type CertPreview = {
 };
 
 async function getCertPreview(): Promise<CertPreview> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/certificate/preview`, {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Failed to load certificate preview");
-  return res.json() as Promise<CertPreview>;
+  const certData = {
+    learnerName: "JOHN MWANGI",
+    courseTitle: "Turnover Tax 3-Day Learning Course",
+    completionDate: "April 2026",
+    certificateId: "KRA-TOT-2026-00142",
+    issuedBy: "Kenya Revenue Authority",
+  };
+
+  let cardImageUrl: string | null = null;
+  try {
+    const rendered = await renderHypecardUrl({
+      templateName: "cert",
+      variables: {
+        name: certData.learnerName,
+        courseTitle: certData.courseTitle,
+        completionDate: certData.completionDate,
+        certificateId: certData.certificateId,
+        issuedBy: certData.issuedBy,
+      },
+    });
+    cardImageUrl = rendered.url;
+  } catch (err) {
+    console.error("[certificate] hypecard render failed:", err);
+  }
+
+  return { ...certData, cardImageUrl };
 }
 
 export default async function CertificatePage() {

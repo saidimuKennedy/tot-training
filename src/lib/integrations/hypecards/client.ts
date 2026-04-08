@@ -49,13 +49,15 @@ function getApiKey(): string {
 export async function renderHypecardUrl(
   input: RenderStatelessInput,
 ): Promise<RenderUrlResult> {
+  const baseUrl = getBaseUrl();
+  const apiKey = getApiKey();
   const res = await fetch(
-    `${getBaseUrl()}/api/dashboard/hypecard-templates/render-stateless-url`,
+    `${baseUrl}/api/dashboard/hypecard-templates/render-stateless-url`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": getApiKey(),
+        "x-api-key": apiKey,
       },
       body: JSON.stringify(input),
     },
@@ -78,13 +80,15 @@ export async function renderHypecardUrl(
 export async function renderHypecardBase64(
   input: RenderStatelessInput,
 ): Promise<RenderBase64Result> {
+  const baseUrl = getBaseUrl();
+  const apiKey = getApiKey();
   const res = await fetch(
-    `${getBaseUrl()}/api/dashboard/hypecard-templates/render-stateless`,
+    `${baseUrl}/api/dashboard/hypecard-templates/render-stateless`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": getApiKey(),
+        "x-api-key": apiKey,
       },
       body: JSON.stringify(input),
     },

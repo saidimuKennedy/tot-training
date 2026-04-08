@@ -43,39 +43,18 @@ type CertificatePageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-async function resolvePhoneFromHsToken(hsToken: string): Promise<string> {
-  const apiUrl = process.env.ANALYTICS_API_URL?.replace(/\/$/, "");
-  const apiKey = process.env.ANALYTICS_INTERNAL_API_KEY;
-  if (!apiUrl || !apiKey) return "";
-  try {
-    const res = await fetch(
-      `${apiUrl}/api/dashboard/handshake/resolve-phone?token=${encodeURIComponent(hsToken)}`,
-      { headers: { "x-api-key": apiKey }, cache: "no-store" },
-    );
-    if (!res.ok) return "";
-    const data = await res.json();
-    return typeof data.phone === "string" ? data.phone.trim() : "";
-  } catch {
-    return "";
-  }
-}
-
 export default async function CertificatePage({ searchParams }: CertificatePageProps) {
   const params = (await searchParams) ?? {};
   const rawName = params.participantName;
   const rawWaTo = params.waTo;
   const rawPhone = params.phone;
   const rawMsisdn = params.msisdn;
-  const rawHsToken = params.hs_token;
   const participantName = typeof rawName === "string" && rawName.trim()
     ? rawName.trim()
     : "JOHN MWANGI";
-  let waTo = [rawWaTo, rawPhone, rawMsisdn].find(
+  const waTo = [rawWaTo, rawPhone, rawMsisdn].find(
     (v): v is string => typeof v === "string" && v.trim().length > 0,
   )?.trim() || "";
-  if (!waTo && typeof rawHsToken === "string" && rawHsToken.trim()) {
-    waTo = await resolvePhoneFromHsToken(rawHsToken.trim());
-  }
   const hasWaRecipient = Boolean(waTo);
   const cert = await getCertPreview(participantName);
   const downloadHref = `/api/certificate/download?participantName=${encodeURIComponent(cert.learnerName)}`;

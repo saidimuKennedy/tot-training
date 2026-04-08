@@ -16,7 +16,7 @@ async function getCertPreview(learnerName: string): Promise<CertPreview> {
     learnerName,
     courseTitle: "Turnover Tax 3-Day Learning Course",
     completionDate: "April 2026",
-    certificateId: "KRA-TOT-2026-00142",
+    certificateId: "KRA-TOT-26-00142",
     issuedBy: "Kenya Revenue Authority",
   };
 

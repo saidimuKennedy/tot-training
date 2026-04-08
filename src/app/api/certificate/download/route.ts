@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const participantName = searchParams.get("participantName")?.trim() || "JOHN MWANGI";
   const completionDate = "April 2026";
-  const certificateId = "KRA-TOT-2026-00142";
+  const certificateId = "KRA-TOT-26-00142";
   try {
     const rendered = await renderHypecardBase64({
       templateName: "cert",

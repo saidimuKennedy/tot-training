@@ -11,9 +11,9 @@ type CertPreview = {
   cardImageUrl: string | null;
 };
 
-async function getCertPreview(): Promise<CertPreview> {
+async function getCertPreview(learnerName: string): Promise<CertPreview> {
   const certData = {
-    learnerName: "JOHN MWANGI",
+    learnerName,
     courseTitle: "Turnover Tax 3-Day Learning Course",
     completionDate: "April 2026",
     certificateId: "KRA-TOT-2026-00142",
@@ -26,10 +26,8 @@ async function getCertPreview(): Promise<CertPreview> {
       templateName: "cert",
       variables: {
         name: certData.learnerName,
-        courseTitle: certData.courseTitle,
-        completionDate: certData.completionDate,
-        certificateId: certData.certificateId,
-        issuedBy: certData.issuedBy,
+        id: certData.certificateId,
+        date: certData.completionDate,
       },
     });
     cardImageUrl = rendered.url;
@@ -40,8 +38,17 @@ async function getCertPreview(): Promise<CertPreview> {
   return { ...certData, cardImageUrl };
 }
 
-export default async function CertificatePage() {
-  const cert = await getCertPreview();
+type CertificatePageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function CertificatePage({ searchParams }: CertificatePageProps) {
+  const params = (await searchParams) ?? {};
+  const rawName = params.participantName;
+  const participantName = typeof rawName === "string" && rawName.trim()
+    ? rawName.trim()
+    : "JOHN MWANGI";
+  const cert = await getCertPreview(participantName);
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-[390px] bg-[#f3f3f3] pb-24">
@@ -55,6 +62,21 @@ export default async function CertificatePage() {
         <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#5e5e5e]">[ Credential // Verified ]</p>
         <h1 className="mt-2 text-5xl font-black leading-[0.9] tracking-tight">ACADEMIC ACHIEVEMENT</h1>
         <p className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[#646464]">Issued on: {cert.completionDate}</p>
+        <form action="/certificate" method="get" className="mt-4 space-y-2 rounded border border-[#e4beba]/40 bg-white p-3">
+          <label htmlFor="participantName" className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[#5e5e5e]">
+            Participant Name
+          </label>
+          <input
+            id="participantName"
+            name="participantName"
+            defaultValue={cert.learnerName}
+            placeholder="Enter participant name"
+            className="w-full border border-[#d8d8d8] px-3 py-2 text-sm outline-none focus:border-[#af101a]"
+          />
+          <button type="submit" className="inline-flex items-center justify-center bg-[#af101a] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+            Generate Certificate
+          </button>
+        </form>
 
         {cert.cardImageUrl ? (
           <div className="mt-5 overflow-hidden border border-[#e4beba]/40 bg-white p-2 shadow-[0_18px_36px_rgba(27,27,27,0.08)]">

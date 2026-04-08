@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 import { renderHypecardUrl } from "@/lib/integrations/hypecards/client";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const participantName = searchParams.get("participantName")?.trim();
+
   const certData = {
-    learnerName: "JOHN MWANGI",
+    learnerName: participantName || "JOHN MWANGI",
     courseTitle: "Turnover Tax 3-Day Learning Course",
     completionDate: "April 2026",
     certificateId: "KRA-TOT-2026-00142",
@@ -16,10 +19,8 @@ export async function GET() {
       templateName: "cert",
       variables: {
         name: certData.learnerName,
-        courseTitle: certData.courseTitle,
-        completionDate: certData.completionDate,
-        certificateId: certData.certificateId,
-        issuedBy: certData.issuedBy,
+        id: certData.certificateId,
+        date: certData.completionDate,
       },
     });
     cardImageUrl = rendered.url;

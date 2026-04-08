@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { StatusChip } from "@/components/course/ui";
 import { BottomNav } from "@/components/course/bottom-nav";
+import { ParamsPersist } from "@/components/course/params-persist";
 import { courseData, getCompletion, type DayStatus } from "@/lib/mock-data/course";
 
 function statusLabel(status: DayStatus) {
@@ -15,10 +16,20 @@ function statusTone(status: DayStatus): "gray" | "amber" | "green" {
   return "gray";
 }
 
-export default function CourseHomePage() {
+type CourseHomePageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function CourseHomePage({ searchParams }: CourseHomePageProps) {
+  const params = (await searchParams) ?? {};
+  const participantName = typeof params.participantName === "string" ? params.participantName.trim() : "";
+  const waTo = [params.waTo, params.phone, params.msisdn].find(
+    (v): v is string => typeof v === "string" && v.trim().length > 0,
+  )?.trim() ?? "";
   const completion = getCompletion(courseData.days);
   return (
     <main className="mx-auto min-h-screen w-full max-w-[390px] bg-[#f9f9f9] px-3 pb-24 pt-3 text-[#1b1b1b]">
+      <ParamsPersist participantName={participantName} waTo={waTo} />
       <header className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wide text-[#2c2c2c]">
         <span className="text-[#d32f2f]">◼</span>
         <span>KRA ACADEMY</span>

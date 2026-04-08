@@ -19,17 +19,23 @@ export function WhatsAppAutoSend({ participantName, whatsappNumber, certificateI
     if (fired.current) return;
     fired.current = true;
 
+    const resolvedPhone = whatsappNumber || localStorage.getItem("waTo") || "";
+    const resolvedName = participantName || localStorage.getItem("participantName") || participantName;
+    if (!resolvedPhone) {
+      setStatus("error");
+      setErrorMsg("No WhatsApp number available.");
+      return;
+    }
+
     setStatus("sending");
 
     const body = new FormData();
-    body.set("participantName", participantName);
-    body.set("whatsappNumber", whatsappNumber);
+    body.set("participantName", resolvedName);
+    body.set("whatsappNumber", resolvedPhone);
     body.set("certificateImageUrl", certificateImageUrl);
 
     fetch("/api/certificate/send-whatsapp", { method: "POST", body })
       .then(async (res) => {
-        // API route redirects on success (303) — follow=manual catches the 303 as opaque,
-        // so we check the final response. A redirect means success.
         if (res.redirected || res.ok) {
           setStatus("sent");
         } else {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BottomNav } from "@/components/course/bottom-nav";
 import { renderHypecardUrl } from "@/lib/integrations/hypecards/client";
 import { WhatsAppAutoSend } from "@/components/certificate/whatsapp-auto-send";
+import { WhatsAppSendFallback } from "@/components/certificate/whatsapp-send-fallback";
 
 type CertPreview = {
   learnerName: string;
@@ -132,9 +133,10 @@ export default async function CertificatePage({ searchParams }: CertificatePageP
               certificateImageUrl={certificateImageUrl}
             />
           ) : (
-            <p className="text-[11px] text-[#8b1e24]">
-              Missing WhatsApp recipient (`waTo`/`phone`/`msisdn`).
-            </p>
+            <WhatsAppSendFallback
+              participantName={cert.learnerName}
+              certificateImageUrl={certificateImageUrl}
+            />
           )}
           <a href={downloadHref} className="inline-flex w-full items-center justify-center border border-[#af101a] bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#af101a]">
             ⇩ Download Certificate

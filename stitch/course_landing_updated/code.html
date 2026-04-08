@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRA ACADEMY | Turnover Tax (ToT)</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&amp;family=Space+Grotesk:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1b1b",
+                        "surface-dim": "#dadada",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#646464",
+                        "on-primary-container": "#fff2f0",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#410003",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "primary": "#af101a",
+                        "on-tertiary-fixed": "#00210c",
+                        "inverse-primary": "#ffb3ac",
+                        "surface-container-low": "#f3f3f3",
+                        "secondary": "#5e5e5e",
+                        "tertiary": "#006533",
+                        "primary-fixed": "#ffdad6",
+                        "on-primary-fixed-variant": "#930010",
+                        "secondary-container": "#e2e2e2",
+                        "primary-container": "#d32f2f",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "tertiary-fixed-dim": "#84d999",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#9ff6b4",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-container": "#d7ffdb",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-container": "#297f49",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary-fixed-variant": "#474747",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-tint": "#ba1a20",
+                        "on-surface-variant": "#5b403d",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e4beba",
+                        "outline": "#8f6f6c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Roboto Mono"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Roboto Mono', monospace; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f9f9f9]/80 dark:bg-black/80 backdrop-blur-xl shadow-[0_12px_32px_rgba(27,27,27,0.06)] flex justify-between items-center px-6 h-16 w-full max-w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#D32F2F] scale-95 active:scale-90 transition-transform cursor-pointer">arrow_back</span>
+<span class="font-['Space_Grotesk'] tracking-tight font-bold uppercase text-xl text-black dark:text-white tracking-[-2%]">KRA ACADEMY</span>
+</div>
+<div class="hidden md:flex gap-8 items-center font-['Space_Grotesk'] text-sm tracking-tight font-bold uppercase">
+<a class="text-[#D32F2F] font-bold hover:opacity-80 transition-opacity" href="#">COURSES</a>
+<a class="text-[#1b1b1b] dark:text-gray-400 hover:opacity-80 transition-opacity" href="#">AWARDS</a>
+<a class="text-[#1b1b1b] dark:text-gray-400 hover:opacity-80 transition-opacity" href="#">PROFILE</a>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface">search</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative bg-surface py-12 md:py-20 overflow-hidden">
+<div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-7 z-10">
+<div class="inline-flex items-center gap-2 mb-6 text-primary uppercase font-bold tracking-widest text-[10px]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                        COURSE // COMPLIANCE 01
+                    </div>
+<h1 class="font-headline text-4xl md:text-6xl font-black text-on-background leading-[1.1] mb-6 tracking-[-0.03em]">
+                        KRA TURNOVER TAX (ToT) MASTERY
+                    </h1>
+<p class="text-secondary body-md max-w-xl mb-8 leading-relaxed">
+                        A definitive guide for small and medium enterprises. Learn to navigate, calculate, and file Turnover Tax within the Kenyan iTax ecosystem with technical precision.
+                    </p>
+<div class="flex items-center gap-6 mb-10">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.9</span>
+<span class="text-secondary text-sm">(2.4k ratings)</span>
+</div>
+<div class="h-4 w-[1px] bg-outline-variant/30"></div>
+<div class="text-sm font-medium text-on-surface">12,482 learners enrolled</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold uppercase tracking-wide hover:opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                            ENROLL FOR FREE
+                            <span class="material-symbols-outlined">bolt</span>
+</button>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-lg font-bold uppercase tracking-wide hover:bg-surface-container-highest transition-all">
+                            WATCH PREVIEW
+                        </button>
+</div>
+</div>
+<div class="md:col-span-5 relative">
+<div class="aspect-square rounded-full overflow-hidden border-[12px] border-surface-container-low shadow-2xl relative z-10">
+<img alt="Technical business analysis" class="w-full h-full object-cover grayscale contrast-125" data-alt="close-up of a modern laptop screen showing complex financial spreadsheets and Kenyan tax documents with red and black aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjtJH9Cr928iQq87VqFp8oKBwo8c1L5u09neHQggWbYQdcoD1bfNHIWwdwYQXa7Db2HerM6yyGw5vkWynYrp_TxnBBsirpZCF5dg0qEGJWmPXPucf5tOtoy0LhVCRjWyObb24zjNLuXlXvwG5CiGqwtzUsD8Dvsex1j_Kga6-cFjIghPP3BzKRK9azp6Yy3tTJWnqCcvJYwKDnZ4VSaFOKCeTJgzO7VKyyCHY8ZY_xVIBKJCTDGBuhUJ2Pa1iw6Xz6-o7FvX-XMk5o"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-tertiary-container/5 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Stats Row -->
+<section class="bg-surface-container-lowest py-8 border-y border-outline-variant/10">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-1">
+<span class="text-secondary label-sm tracking-[5%] uppercase">DURATION</span>
+<span class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span> 3 DAYS
+                        </span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-secondary label-sm tracking-[5%] uppercase">MODULES</span>
+<span class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">layers</span> 3 VIDEOS
+                        </span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-secondary label-sm tracking-[5%] uppercase">SKILL LEVEL</span>
+<span class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">signal_cellular_alt</span> BEGINNER
+                        </span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-secondary label-sm tracking-[5%] uppercase">LANGUAGE</span>
+<span class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">language</span> ENGLISH
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<section class="container mx-auto px-6 mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Column -->
+<div class="lg:col-span-8">
+<!-- What you'll learn -->
+<div class="mb-16">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="w-8 h-[2px] bg-primary"></span>
+                        WHAT YOU'LL LEARN
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-on-surface body-md">Criteria for ToT eligibility and registration procedures on iTax.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-on-surface body-md">Detailed breakdown of the 1% and 3% tax rate transitions.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-on-surface body-md">Step-by-step walkthrough of filing the monthly ToT return.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="text-on-surface body-md">Managing penalties and compliance for MSMEs.</p>
+</div>
+</div>
+</div>
+<!-- Course Content (Expandable Modules) -->
+<div class="mb-16">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="w-8 h-[2px] bg-primary"></span>
+                        COURSE CONTENT
+                    </h2>
+<div class="space-y-4">
+<!-- Module 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg overflow-hidden transition-all hover:shadow-md">
+<div class="p-6 flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-6">
+<span class="text-primary font-bold text-sm tracking-widest">[01]</span>
+<span class="font-bold text-lg">Foundations of Turnover Tax</span>
+</div>
+<div class="flex items-center gap-4 text-secondary text-sm">
+<span>2 Lessons • 45m</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Module 2 (Active/Expanded feel) -->
+<div class="bg-surface-container-lowest border-l-4 border-l-primary rounded-lg shadow-lg overflow-hidden">
+<div class="p-6 flex items-center justify-between border-b border-surface-container-low">
+<div class="flex items-center gap-6">
+<span class="text-primary font-bold text-sm tracking-widest">[02]</span>
+<span class="font-bold text-lg">The iTax Workflow: Filing &amp; Payment</span>
+</div>
+<div class="flex items-center gap-4 text-secondary text-sm">
+<span>4 Lessons • 1h 20m</span>
+<span class="material-symbols-outlined">expand_less</span>
+</div>
+</div>
+<div class="p-6 space-y-4 bg-surface/50">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary">play_circle</span>
+<span class="text-sm">Generating the ToT Payment Slip</span>
+</div>
+<span class="text-xs text-secondary font-mono">15:00</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary">play_circle</span>
+<span class="text-sm">Excel CSV Upload Strategy</span>
+</div>
+<span class="text-xs text-secondary font-mono">25:00</span>
+</div>
+</div>
+</div>
+<!-- Module 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg overflow-hidden transition-all hover:shadow-md opacity-60">
+<div class="p-6 flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-6">
+<span class="text-primary font-bold text-sm tracking-widest">[03]</span>
+<span class="font-bold text-lg">Audit Triggers &amp; Compliance</span>
+</div>
+<div class="flex items-center gap-4 text-secondary text-sm">
+<span>1 Lesson • 30m</span>
+<span class="material-symbols-outlined">lock</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="lg:col-span-4 space-y-12">
+<!-- Instructor Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_12px_32px_rgba(27,27,27,0.06)] border border-outline-variant/10">
+<h3 class="label-sm text-secondary uppercase tracking-[5%] mb-6">INSTRUCTOR</h3>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary/20">
+<img alt="Tax Expert Portrait" class="w-full h-full object-cover grayscale" data-alt="professional portrait of a confident male tax consultant in a sharp suit with modern office background, clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0qK6mKaIJSP_qTitO7kEW4sz3dx8Gm5ZcKWxS-6gFWTEBO6MoAY_L1f0q-xe0pP9I_Ca8RrPSsCc6iNpkN9cO0ihTZZE-f72IUvpfsW6uYU4oLjYlcCtWyUGkTifHsSJJSbodjyIbptB92_GCa-8OeJ15BXc5lHnI2dW1fnzcV0ifVL_bb8jIeX6VkIuH1pQozo9wbSGKvTJwCoHVWh7NU6OHYc4Bq09RiesMdNB9a93b1jBooftAHXsIsa_K1lORwZqCXRgtndYQ"/>
+</div>
+<div>
+<div class="font-bold text-lg">Dr. Samuel Kamau</div>
+<div class="text-sm text-secondary">Senior Tax Specialist</div>
+</div>
+</div>
+<p class="text-sm leading-relaxed text-secondary mb-6 italic">
+                        "Empowering Kenyan entrepreneurs with the technical tools to maintain 100% compliance without the stress."
+                    </p>
+<div class="flex items-center gap-4 pt-6 border-t border-surface-container-low">
+<div class="flex flex-col items-center flex-1">
+<span class="text-lg font-bold">15+</span>
+<span class="text-[10px] text-secondary uppercase font-bold">YEARS EXP</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/20"></div>
+<div class="flex flex-col items-center flex-1">
+<span class="text-lg font-bold">45k</span>
+<span class="text-[10px] text-secondary uppercase font-bold">STUDENTS</span>
+</div>
+</div>
+</div>
+<!-- Sticky Sidebar Call-to-action (Tablet/Desktop) -->
+<div class="hidden lg:block bg-on-background text-on-primary p-8 rounded-lg">
+<h4 class="font-headline text-xl font-bold mb-4">READY TO START?</h4>
+<p class="text-secondary-fixed-dim text-sm mb-6 leading-relaxed">Join thousands of Kenyan SMEs streamlining their tax obligations today.</p>
+<ul class="space-y-3 mb-8 text-sm">
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+                            Certificate of Completion
+                        </li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+                            Downloadable iTax Guide
+                        </li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+                            Lifetime Access
+                        </li>
+</ul>
+<button class="w-full bg-primary text-white py-4 rounded-lg font-bold hover:scale-[1.02] transition-transform">
+                        ENROLL FOR FREE
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-[#ffffff] dark:bg-[#1b1b1b] flex justify-around items-center px-4 pb-safe z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] border-t border-black/5">
+<div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3 active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase mt-1">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#D32F2F] bg-[#f3f3f3] dark:bg-black/20 rounded-lg py-1 px-3 active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase mt-1">COURSES</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3 active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase mt-1">AWARDS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3 active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase mt-1">PROFILE</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Day 1: Registration &amp; Setup | KRA ACADEMY</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1b1b",
+                        "surface-dim": "#dadada",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#646464",
+                        "on-primary-container": "#fff2f0",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#410003",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "primary": "#af101a",
+                        "on-tertiary-fixed": "#00210c",
+                        "inverse-primary": "#ffb3ac",
+                        "surface-container-low": "#f3f3f3",
+                        "secondary": "#5e5e5e",
+                        "tertiary": "#006533",
+                        "primary-fixed": "#ffdad6",
+                        "on-primary-fixed-variant": "#930010",
+                        "secondary-container": "#e2e2e2",
+                        "primary-container": "#d32f2f",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "tertiary-fixed-dim": "#84d999",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#9ff6b4",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-container": "#d7ffdb",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-container": "#297f49",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary-fixed-variant": "#474747",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-tint": "#ba1a20",
+                        "on-surface-variant": "#5b403d",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e4beba",
+                        "outline": "#8f6f6c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Roboto Mono"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Roboto Mono', monospace; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-editorial {
+            letter-spacing: -0.02em;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#f9f9f9]/80 dark:bg-black/80 backdrop-blur-xl shadow-[0_12px_32px_rgba(27,27,27,0.06)] fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#D32F2F]">terminal</span>
+<h1 class="font-['Space_Grotesk'] tracking-tight font-bold uppercase text-xl text-black dark:text-white tracking-[-2%]">KRA ACADEMY</h1>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-[#D32F2F] font-bold font-['Space_Grotesk'] text-sm tracking-widest" href="#">HOME</a>
+<a class="text-[#1b1b1b] dark:text-gray-400 hover:opacity-80 transition-opacity font-['Space_Grotesk'] text-sm tracking-widest" href="#">COURSES</a>
+<a class="text-[#1b1b1b] dark:text-gray-400 hover:opacity-80 transition-opacity font-['Space_Grotesk'] text-sm tracking-widest" href="#">AWARDS</a>
+<a class="text-[#1b1b1b] dark:text-gray-400 hover:opacity-80 transition-opacity font-['Space_Grotesk'] text-sm tracking-widest" href="#">PROFILE</a>
+</nav>
+<button class="material-symbols-outlined text-on-surface transition-transform active:scale-90">search</button>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-4xl mx-auto">
+<!-- Breadcrumb / Meta -->
+<div class="flex items-center gap-2 mb-6">
+<span class="text-[10px] font-bold tracking-[0.2em] text-secondary uppercase">MODULE 01</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="text-[10px] font-bold tracking-[0.2em] text-secondary uppercase">ORIENTATION</span>
+</div>
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="text-4xl md:text-6xl font-bold text-on-surface text-editorial mb-6 leading-tight">Registration &amp; Setup</h1>
+<div class="flex flex-wrap items-center gap-4">
+<div class="bg-surface-container-low px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-sm font-bold tracking-tighter uppercase">45 MINUTES</span>
+</div>
+<div class="bg-primary/5 px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<span class="text-sm font-bold tracking-tighter uppercase text-primary">REQUIRED FOR CERTIFICATION</span>
+</div>
+</div>
+</section>
+<!-- Asymmetric Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- What You'll Learn Today -->
+<div class="md:col-span-7 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/15">
+<div class="flex items-center gap-3 mb-8">
+<span class="bg-primary-container text-on-primary-container p-2 rounded material-symbols-outlined">lightbulb</span>
+<h2 class="font-bold text-xl uppercase tracking-tight">What you'll learn today</h2>
+</div>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="text-primary font-bold text-sm">[01]</span>
+<div>
+<p class="text-on-surface font-medium mb-1">Architecture Overview</p>
+<p class="text-secondary text-sm leading-relaxed">Understanding the underlying framework of the KRA technical stack.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="text-primary font-bold text-sm">[02]</span>
+<div>
+<p class="text-on-surface font-medium mb-1">Environment Configuration</p>
+<p class="text-secondary text-sm leading-relaxed">Setting up your local IDE and shell for optimal performance.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="text-primary font-bold text-sm">[03]</span>
+<div>
+<p class="text-on-surface font-medium mb-1">Credential Integration</p>
+<p class="text-secondary text-sm leading-relaxed">Linking your academic profile with secure authentication protocols.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Why This Matters -->
+<div class="md:col-span-5 flex flex-col gap-6">
+<div class="bg-on-background text-surface p-8 rounded-xl h-full flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="text-xs font-bold tracking-[0.3em] uppercase text-surface/50 mb-4">Editorial Insight</h3>
+<p class="text-lg leading-relaxed font-light italic">
+                            "Without a precise foundation, technical debt becomes inevitable. Registration is the first handshake between the developer and the system."
+                        </p>
+</div>
+<div class="mt-8 relative z-10">
+<h4 class="text-sm font-bold text-primary">WHY THIS MATTERS</h4>
+<p class="text-sm text-surface-variant/80 mt-2 leading-relaxed">
+                            Skipping proper setup leads to 40% more troubleshooting later. We ensure your environment is sterile and high-performing from day one.
+                        </p>
+</div>
+<!-- Abstract Background Texture -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 blur-3xl rounded-full"></div>
+</div>
+</div>
+<!-- Resource Quick Links -->
+<div class="md:col-span-12 bg-surface-container-low p-6 rounded-xl flex flex-wrap items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-widest">RESOURCES //</span>
+<a class="text-xs font-bold hover:text-primary underline underline-offset-4 decoration-outline-variant" href="#">SETUP_GUIDE.PDF</a>
+<a class="text-xs font-bold hover:text-primary underline underline-offset-4 decoration-outline-variant" href="#">KEY_BINDINGS.JSON</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest">SYSTEM READY</span>
+</div>
+</div>
+</div>
+<!-- Featured Media Section -->
+<div class="mt-12 group cursor-pointer relative overflow-hidden rounded-xl h-64">
+<img alt="Technical Setup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up of a high-end mechanical keyboard and curved monitor displaying lines of code in a dimly lit minimalist workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQM6VQyIm2hvzGAHOYvOUdWhiQDne1qsnqxqF3poGdmz3IAqDVuOuemeS_rfP4yWT8zwqtsHyDLDtC8FdnfxJFCeDzw5k8howWmfzPtVOdhB061hVR3DOZXKEYhfHyUbf0mPX6Fb-HiUIqw0efJwYlp_tCJN2DfCsK5FJb1PbyUhFOyj0A7XuT3UY7GANQG4ISc4_G-P2T7Yo1tI3AI1GSP1081y-rZ9mFEySEY9-ipIfNKcHrXHrt5LDu_80FNysc61qdMvCLpnxq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+<span class="text-[10px] font-bold text-primary mb-2 tracking-[0.4em]">PREVIEW</span>
+<h3 class="text-white text-2xl font-bold">Module Overview: The Command Line</h3>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-6 z-50 flex justify-center pointer-events-none">
+<button class="pointer-events-auto bg-primary text-on-primary px-10 py-5 rounded-full flex items-center gap-4 shadow-[0_12px_32px_rgba(175,16,26,0.3)] transition-all hover:scale-105 active:scale-95 group">
+<span class="font-bold tracking-[0.2em] uppercase">Play Lesson</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-[#ffffff] dark:bg-[#1b1b1b] fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.03)] border-t border-black/5 z-40">
+<div class="flex flex-col items-center justify-center text-[#D32F2F] bg-[#f3f3f3] dark:bg-black/20 rounded-lg py-1 px-3">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase">HOME</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase">COURSES</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase">AWARDS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 py-1 px-3">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[5%] font-bold uppercase">PROFILE</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KRA ACADEMY - Lesson Player</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&amp;family=Space+Grotesk:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        body {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .headline-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1b1b",
+                        "surface-dim": "#dadada",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#646464",
+                        "on-primary-container": "#fff2f0",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#410003",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "primary": "#af101a",
+                        "on-tertiary-fixed": "#00210c",
+                        "inverse-primary": "#ffb3ac",
+                        "surface-container-low": "#f3f3f3",
+                        "secondary": "#5e5e5e",
+                        "tertiary": "#006533",
+                        "primary-fixed": "#ffdad6",
+                        "on-primary-fixed-variant": "#930010",
+                        "secondary-container": "#e2e2e2",
+                        "primary-container": "#d32f2f",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "tertiary-fixed-dim": "#84d999",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#9ff6b4",
+                        "background": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-container": "#d7ffdb",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-container": "#297f49",
+                        "primary-fixed-dim": "#ffb3ac",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-secondary-fixed-variant": "#474747",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-tint": "#ba1a20",
+                        "on-surface-variant": "#5b403d",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#e4beba",
+                        "outline": "#8f6f6c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Roboto Mono"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Header / TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#1b1b1b] text-white shadow-[0_12px_32px_rgba(27,27,27,0.06)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#D32F2F]">terminal</span>
+<span class="font-['Space_Grotesk'] tracking-tight font-bold uppercase text-xl text-white">KRA ACADEMY</span>
+</div>
+<div class="hidden md:flex gap-8 items-center text-sm tracking-widest font-medium">
+<span class="text-white/60">MODULE [04]</span>
+<span class="text-white/40">//</span>
+<span class="text-white">SYSTEM ARCHITECTURE</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-white hover:opacity-80 transition-opacity">close</button>
+</div>
+</div>
+<!-- Progress Bar (The Green Rule) -->
+<div class="w-full h-1 bg-surface-container-high">
+<div class="h-full bg-tertiary transition-all duration-500" style="width: 65%;"></div>
+</div>
+</header>
+<main class="pt-20 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Video Section (16:9 Placeholder) -->
+<section class="mt-8 relative group">
+<div class="aspect-video w-full bg-black rounded-lg overflow-hidden shadow-2xl relative">
+<img class="w-full h-full object-cover opacity-60" data-alt="Technical code on a monitor in a dark room with cyan and red cinematic lighting, highly detailed tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOE_dxEhFVnUqznk5dwpukankmSdJFftruqzXqlFdGiSCc5Ze3A3cGpZodpiBdFoj5FHpc9zduOQfnV0wvF7kTHGcyRRPizim1E-PKLLqchvnLIcbtzhTO3uLT1qfD7jKjETTpjJY75mnXcdCgELkrzJNoMigIvnGpcWipwtfGB0nybuCfqromp9D1uKnUEdBfhzUhxiEqRAVUjlYQ4fkyEp4CfRzlCogtehYHcvwFi789CHEoueUK1-HGyV_0FwbpUMMpt0nxaejq"/>
+<!-- Video Controls Overlay -->
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-20 bg-primary/90 text-white rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex items-center justify-between text-white text-xs tracking-widest uppercase">
+<div class="flex items-center gap-4">
+<span class="bg-primary px-2 py-0.5 text-[10px] font-bold">LIVE ACCESS</span>
+<span>12:45 / 18:30</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Lesson Meta -->
+<section class="mt-12 mb-16 border-l-4 border-primary pl-8 py-2">
+<span class="label-sm text-primary font-bold tracking-widest uppercase text-xs">LECTURE 04.2</span>
+<h1 class="text-3xl md:text-5xl font-black headline-font text-on-surface mt-2 tracking-tighter">PROTOCOLS &amp; ENCRYPTION</h1>
+<p class="text-secondary mt-4 max-w-2xl leading-relaxed">Advanced analysis of cryptographic handshakes and data integrity validation in decentralized networks.</p>
+</section>
+<!-- What to Remember Section (Bento Cards) -->
+<section class="mb-24">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="headline-font font-bold text-xl uppercase tracking-widest">What to remember</h2>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-lg border-b-2 border-transparent hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary">security</span>
+<span class="text-[10px] text-secondary-fixed-dim font-bold tracking-widest uppercase">[ KEY 01 ]</span>
+</div>
+<h3 class="font-bold text-lg mb-3 tracking-tight">Zero-Trust Model</h3>
+<p class="text-sm text-secondary leading-relaxed">Always verify every request, regardless of its origin within or outside the network perimeter.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-lg border-b-2 border-transparent hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="text-[10px] text-secondary-fixed-dim font-bold tracking-widest uppercase">[ KEY 02 ]</span>
+</div>
+<h3 class="font-bold text-lg mb-3 tracking-tight">Entropy Variance</h3>
+<p class="text-sm text-secondary leading-relaxed">Higher entropy correlates directly with cryptographic strength. Monitor for variance shifts.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 shadow-[0_12px_32px_rgba(27,27,27,0.06)] rounded-lg border-b-2 border-transparent hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary">shield_lock</span>
+<span class="text-[10px] text-secondary-fixed-dim font-bold tracking-widest uppercase">[ KEY 03 ]</span>
+</div>
+<h3 class="font-bold text-lg mb-3 tracking-tight">Latency vs Security</h3>
+<p class="text-sm text-secondary leading-relaxed">Understanding the trade-off between handshake speed and encryption depth for edge devices.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl py-6 px-8 border-t border-outline-variant/10 z-40">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 text-secondary hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    PREV LESSON
+                </button>
+<div class="hidden md:block w-[1px] h-4 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-tertiary font-black uppercase tracking-widest">NEXT UP</span>
+<span class="text-sm font-bold truncate max-w-[200px]">04.3 ASYMMETRIC LOGIC</span>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-grow md:flex-none px-8 py-4 bg-primary text-on-primary font-bold uppercase tracking-[0.15em] text-xs flex items-center justify-center gap-3 hover:opacity-90 active:scale-[0.98] transition-all">
+                    Take quick quiz
+                    <span class="material-symbols-outlined text-sm">bolt</span>
+</button>
+<button class="px-4 py-4 bg-surface-container text-on-surface font-bold uppercase text-xs flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Bottom Navigation Shell (Suppress as per rule for Task-Focused screen, but UI needs it? No, Task Focused - suppression) -->
+</body></html>

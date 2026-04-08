@@ -115,9 +115,6 @@ export default async function CertificatePage({ searchParams }: CertificatePageP
         </div>
 
         <div className="mt-3 space-y-2">
-          <button className="inline-flex w-full items-center justify-center bg-[#af101a] px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white">
-            ↗ Send to WhatsApp
-          </button>
           <a href={downloadHref} className="inline-flex w-full items-center justify-center border border-[#af101a] bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#af101a]">
             ⇩ Download Certificate
           </a>

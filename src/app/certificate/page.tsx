@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BottomNav } from "@/components/course/bottom-nav";
 import { renderHypecardUrl } from "@/lib/integrations/hypecards/client";
+import { WhatsAppAutoSend } from "@/components/certificate/whatsapp-auto-send";
 
 type CertPreview = {
   learnerName: string;
@@ -42,21 +43,40 @@ type CertificatePageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
+async function resolvePhoneFromHsToken(hsToken: string): Promise<string> {
+  const apiUrl = process.env.ANALYTICS_API_URL?.replace(/\/$/, "");
+  const apiKey = process.env.ANALYTICS_INTERNAL_API_KEY;
+  if (!apiUrl || !apiKey) return "";
+  try {
+    const res = await fetch(
+      `${apiUrl}/api/dashboard/handshake/resolve-phone?token=${encodeURIComponent(hsToken)}`,
+      { headers: { "x-api-key": apiKey }, cache: "no-store" },
+    );
+    if (!res.ok) return "";
+    const data = await res.json();
+    return typeof data.phone === "string" ? data.phone.trim() : "";
+  } catch {
+    return "";
+  }
+}
+
 export default async function CertificatePage({ searchParams }: CertificatePageProps) {
   const params = (await searchParams) ?? {};
   const rawName = params.participantName;
   const rawWaTo = params.waTo;
   const rawPhone = params.phone;
   const rawMsisdn = params.msisdn;
-  const rawWaSent = params.waSent;
+  const rawHsToken = params.hs_token;
   const participantName = typeof rawName === "string" && rawName.trim()
     ? rawName.trim()
     : "JOHN MWANGI";
-  const waTo = [rawWaTo, rawPhone, rawMsisdn].find(
+  let waTo = [rawWaTo, rawPhone, rawMsisdn].find(
     (v): v is string => typeof v === "string" && v.trim().length > 0,
   )?.trim() || "";
+  if (!waTo && typeof rawHsToken === "string" && rawHsToken.trim()) {
+    waTo = await resolvePhoneFromHsToken(rawHsToken.trim());
+  }
   const hasWaRecipient = Boolean(waTo);
-  const waSent = rawWaSent === "1";
   const cert = await getCertPreview(participantName);
   const downloadHref = `/api/certificate/download?participantName=${encodeURIComponent(cert.learnerName)}`;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || "http://localhost:3000";
@@ -126,28 +146,17 @@ export default async function CertificatePage({ searchParams }: CertificatePageP
         </div>
 
         <div className="mt-3 space-y-2">
-          <form action="/api/certificate/send-whatsapp" method="post" className="space-y-2">
-            <input type="hidden" name="participantName" value={cert.learnerName} />
-            <input type="hidden" name="certificateImageUrl" value={certificateImageUrl} />
-            <input type="hidden" name="whatsappNumber" value={waTo} />
-            <button
-              type="submit"
-              disabled={!hasWaRecipient}
-              className="inline-flex w-full items-center justify-center bg-[#af101a] px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white"
-            >
-              ↗ Send to WhatsApp
-            </button>
-          </form>
-          {!hasWaRecipient ? (
+          {hasWaRecipient ? (
+            <WhatsAppAutoSend
+              participantName={cert.learnerName}
+              whatsappNumber={waTo}
+              certificateImageUrl={certificateImageUrl}
+            />
+          ) : (
             <p className="text-[11px] text-[#8b1e24]">
-              Missing WhatsApp recipient in webview context (`waTo`/`phone`/`msisdn`).
+              Missing WhatsApp recipient (`waTo`/`phone`/`msisdn`).
             </p>
-          ) : null}
-          {waSent ? (
-            <p className="text-[11px] font-medium text-[#006533]">
-              WhatsApp message sent to {waTo}.
-            </p>
-          ) : null}
+          )}
           <a href={downloadHref} className="inline-flex w-full items-center justify-center border border-[#af101a] bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#af101a]">
             ⇩ Download Certificate
           </a>

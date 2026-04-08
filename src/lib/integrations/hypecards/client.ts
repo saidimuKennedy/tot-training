@@ -50,7 +50,7 @@ export async function renderHypecardUrl(
   input: RenderStatelessInput,
 ): Promise<RenderUrlResult> {
   const res = await fetch(
-    `${getBaseUrl()}/hypecard-templates/render-stateless-url`,
+    `${getBaseUrl()}/api/dashboard/hypecard-templates/render-stateless-url`,
     {
       method: "POST",
       headers: {
@@ -79,7 +79,7 @@ export async function renderHypecardBase64(
   input: RenderStatelessInput,
 ): Promise<RenderBase64Result> {
   const res = await fetch(
-    `${getBaseUrl()}/hypecard-templates/render-stateless`,
+    `${getBaseUrl()}/api/dashboard/hypecard-templates/render-stateless`,
     {
       method: "POST",
       headers: {

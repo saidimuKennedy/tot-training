@@ -54,7 +54,7 @@ export function WhatsAppSendFallback({ participantName, certificateImageUrl }: P
         type="tel"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        placeholder="e.g. 254704696287"
+        placeholder="e.g. 2547XXXXXX"
         className="w-full border border-[#d8d8d8] px-3 py-2 text-sm outline-none focus:border-[#af101a]"
       />
       {status === "error" && (

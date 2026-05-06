@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const certData = {
     learnerName: participantName || "JOHN MWANGI",
     courseTitle: "Turnover Tax 3-Day Learning Course",
-    completionDate: "April 2026",
+    completionDate: "May 2026",
     certificateId: "KRA-TOT-26-00142",
     issuedBy: "Kenya Revenue Authority",
   };

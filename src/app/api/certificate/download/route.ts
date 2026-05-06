@@ -12,7 +12,7 @@ function sanitizeFilePart(value: string): string {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const participantName = searchParams.get("participantName")?.trim() || "JOHN MWANGI";
-  const completionDate = "April 2026";
+  const completionDate = "May 2026";
   const certificateId = "KRA-TOT-26-00142";
   try {
     const rendered = await renderHypecardBase64({
